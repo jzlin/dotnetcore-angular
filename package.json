@@ -2,7 +2,13 @@
   "name": "dotnetcore_angular",
   "version": "0.0.0",
   "scripts": {
-    "test": "karma start ClientApp/test/karma.conf.js"
+    "preinstall": "dotnet restore",
+    "postinstall": "npm run build:webpack",
+    "start": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet run",
+    "test": "karma start ClientApp/test/karma.conf.js",
+    "build:webpack": "npm run webpack-vendor && npm run webpack",
+    "webpack": "webpack --progress",
+    "webpack-vendor": "webpack --config webpack.config.vendor.js --progress"
   },
   "dependencies": {
     "@angular/common": "^2.4.5",
@@ -24,6 +30,7 @@
     "aspnet-webpack": "^1.0.17",
     "awesome-typescript-loader": "^3.0.0",
     "bootstrap": "^3.3.7",
+    "cross-env": "^4.0.0",
     "css": "^2.2.1",
     "css-loader": "^0.25.0",
     "es6-shim": "^0.35.1",
