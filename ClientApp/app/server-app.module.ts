@@ -14,6 +14,12 @@ import { AppComponent } from './components/app/app.component';
         }),
         ServerModule,
         AppModule
+    ],
+    providers: [
+        {
+            provide: 'isBrowser',
+            useValue: false
+        }
     ]
 })
 export class AppServerModule {
