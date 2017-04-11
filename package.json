@@ -4,11 +4,17 @@
   "scripts": {
     "preinstall": "dotnet restore",
     "postinstall": "npm run build:webpack",
+    "prestart": "npm run clean:bin",
     "start": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet run",
     "test": "karma start ClientApp/test/karma.conf.js",
+    "build": "npm run clean && npm run build:webpack",
     "build:webpack": "npm run webpack-vendor && npm run webpack",
     "webpack": "webpack --progress",
-    "webpack-vendor": "webpack --config webpack.config.vendor.js --progress"
+    "webpack-vendor": "webpack --config webpack.config.vendor.js --progress",
+    "clean": "npm run clean:dist && npm run clean:bin",
+    "clean:dist": "rimraf ClientApp/dist wwwroot/dist",
+    "clean:bin": "rimraf bin",
+    "clean:git": "git clean -d -x -f"
   },
   "dependencies": {
     "@angular/common": "^2.4.5",
@@ -30,7 +36,6 @@
     "aspnet-webpack": "^1.0.17",
     "awesome-typescript-loader": "^3.0.0",
     "bootstrap": "^3.3.7",
-    "cross-env": "^4.0.0",
     "css": "^2.2.1",
     "css-loader": "^0.25.0",
     "es6-shim": "^0.35.1",
@@ -61,12 +66,14 @@
     "@types/chai": "^3.4.34",
     "@types/jasmine": "^2.5.37",
     "chai": "^3.5.0",
+    "cross-env": "^4.0.0",
     "jasmine-core": "^2.5.2",
     "karma": "^1.3.0",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
-    "karma-webpack": "^1.8.0"
+    "karma-webpack": "^1.8.0",
+    "rimraf": "^2.6.1"
   }
 }
