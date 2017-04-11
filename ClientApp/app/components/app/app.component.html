@@ -1,10 +1,12 @@
-<div class='container-fluid'>
-    <div class='row'>
-        <div class='col-sm-3'>
-            <nav-menu></nav-menu>
-        </div>
-        <div class='col-sm-9 body-content'>
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-</div>
+<md-sidenav-container>
+  <md-sidenav mode="push" #sidenav>
+    <!-- sidenav content -->
+    <nav-menu></nav-menu>
+  </md-sidenav>
+
+  <!-- primary content -->
+  <button md-icon-button (click)="sidenav.open()">
+    <md-icon>menu</md-icon>
+  </button>
+  <router-outlet></router-outlet>
+</md-sidenav-container>
