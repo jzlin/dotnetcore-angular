@@ -1,10 +1,11 @@
-<div class='container-fluid'>
-    <div class='row'>
-        <div class='col-sm-3'>
-            <nav-menu></nav-menu>
-        </div>
-        <div class='col-sm-9 body-content'>
-            <router-outlet></router-outlet>
-        </div>
-    </div>
+<div class="mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout-icon"></div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <nav-menu></nav-menu>
+  </div>
+  <main class="mdl-layout__content">
+    <router-outlet></router-outlet>
+  </main>
 </div>
